@@ -1,10 +1,6 @@
 const express = require('express');
 const app = express();
 
-app.use('/', (req, res, next) => {
-  res.send('lol');
-});
-
 const port = process.env.PORT || 9000;
 
 app.listen(port, () => console.log('sever listening on port 9000'));
