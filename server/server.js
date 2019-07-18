@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
 
-app.use('/', (req, res) => {
-  res.send('Send help');
-});
+// app.use('/', (req, res) => {
+//   res.send('Send help');
+// });
 
 // only for production on heroku
 if (process.env.NODE_ENV === 'production') {
@@ -11,7 +11,9 @@ if (process.env.NODE_ENV === 'production') {
 
   const path = require('path');
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve('../client', 'build', 'index.html'));
+    res.sendFile(
+      path.resolve(__dirname, '..', 'client', 'build', 'index.html')
+    );
   });
 }
 
