@@ -2,9 +2,7 @@ const express = require('express');
 const app = express();
 
 app.use('/', (req, res) => {
-  res.send(
-    "Heroku gets on my nerves so i'm going to burn the entire internet down. Lol"
-  );
+  res.send('Send help');
 });
 
 // only for production on heroku
