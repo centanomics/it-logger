@@ -29,6 +29,6 @@ if (process.env.NODE_ENV === 'production') {
 
 const PORT = process.env.PORT || 9000;
 
-app.listen(PORT, () => console.log('sever listening on port 9000'));
+app.listen(PORT, () => console.log(`sever listening on port ${PORT}`));
 
 module.exports = app;

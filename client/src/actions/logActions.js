@@ -26,7 +26,7 @@ import {
 export const getLogs = () => async dispatch => {
   try {
     setLoading();
-    const res = await fetch('/logs');
+    const res = await fetch('/api/logs');
     const data = await res.json();
     dispatch({
       type: GET_LOGS,
@@ -44,7 +44,7 @@ export const getLogs = () => async dispatch => {
 export const addLog = log => async dispatch => {
   try {
     setLoading();
-    const res = await fetch('/logs', {
+    const res = await fetch('/api/logs', {
       method: 'POST',
       body: JSON.stringify(log),
       headers: { 'Content-Type': 'application/json' }
@@ -81,7 +81,7 @@ export const clearCurrent = () => {
 export const deleteLog = id => async dispatch => {
   try {
     setLoading();
-    await fetch(`/logs/${id}`, { method: 'DELETE' });
+    await fetch(`/api/logs/${id}`, { method: 'DELETE' });
     dispatch({
       type: DELETE_LOG,
       payload: id
@@ -98,7 +98,7 @@ export const deleteLog = id => async dispatch => {
 export const updateLog = log => async dispatch => {
   try {
     setLoading();
-    const res = await fetch(`/logs/${log.id}`, {
+    const res = await fetch(`/api/logs/${log.id}`, {
       method: 'PUT',
       body: JSON.stringify(log),
       headers: {
@@ -122,7 +122,7 @@ export const updateLog = log => async dispatch => {
 export const searchLogs = text => async dispatch => {
   try {
     setLoading();
-    const res = await fetch(`/logs?q=${text}`);
+    const res = await fetch(`/api/logs?q=${text}`);
     const data = await res.json();
     dispatch({
       type: SEARCH_LOGS,
