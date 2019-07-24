@@ -13,8 +13,15 @@ const Techs = require('../models/Techs');
 // @access    Public
 router.get('/', async (req, res) => {
   try {
-    const logs = await Logs.find();
-    res.json(logs);
+    if (!req.query.q) {
+      const logs = await Logs.find();
+      res.json(logs);
+    } else {
+      const logs = await Logs.find({
+        message: { $regex: `${req.query.q}`, $options: 'i' }
+      });
+      res.json(logs);
+    }
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
